@@ -1,0 +1,54 @@
+[project]
+name = "pytestbed"
+version = "0.1.0"
+description = "Functions and utilities used in the testbed."
+readme = "README.md"
+authors = [
+  { name="Kuravi H", email="kuravih@gmail.com" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.4.0",
+    "astropy>=7.2.0",
+    "hcipy>=0.7.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/kuravih/pytestbed"
+Issues = "https://github.com/kuravih/pytestbed/issues"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.0",
+    "ty>=0.0.1",
+    "pytest>=8.4.2",
+    "pyzmq>=27.1.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 1024
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W",   # pycodestyle/pyflakes core
+    "C90",           # mccabe complexity
+    "N",             # pep8-naming
+    "D",             # pydocstyle (docstrings)
+    "I",             # isort
+    "B",             # bugbear (catches common pylint-style issues)
+]
+ignore = [
+    "D203", "D213",  # conflicting docstring rules, pick one style
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
